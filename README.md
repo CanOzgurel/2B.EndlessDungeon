@@ -4,4 +4,4 @@
   
   The Endless Dungeon awaits, with endless opportunities as well as endless dangers. Are you up for the challenge?
 
-![alt text](https://github.com/CanOzgurel/2B.EndlessDungeon/blob/unstable/dungeon.jpg)
+![Endless Dungeon](https://github.com/CanOzgurel/2B.EndlessDungeon/blob/unstable/res/dungeon.jpg)
