@@ -36,3 +36,7 @@
 * Progression System and Perspective (Evolution: Heroes of Utopia - https://hou.my.com/)
 * Progression System (Bit Dungeon II - http://store.steampowered.com/app/331440/bit_Dungeon_II/)
 * Lore (Dungeons and Dragons - http://dnd.wizards.com/)
+
+# Meeting Log
+
+  Our meetings will be recorded here: https://docs.google.com/document/d/1zqLPG5Yrl0nPdg38NJykxOeAGYSD83ItbDO8U5U2Pbk/edit?usp=sharing
