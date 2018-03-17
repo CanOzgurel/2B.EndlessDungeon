@@ -1,6 +1,6 @@
 package GameObjects;
 
-public class Player extends GameObject {
+public class Player {
 
 	private int health;
 	private int attack;
@@ -55,10 +55,7 @@ public class Player extends GameObject {
 	}
 
 	public boolean isAlive() {
-		if(health > 0)
-			return true;
-		else
-			return false;
+		return (health > 0);
 	}
 
 //	public PlayerType getPlayerType(){
