@@ -15,7 +15,6 @@ public class SoundManager extends JPanel implements ActionListener{
     ImageIcon muteIcon = new ImageIcon("mute.jpg");
     ImageIcon unmuteIcon = new ImageIcon("unmute.jpg");
 
-
     File file;
 
     JButton mute;
@@ -42,10 +41,7 @@ public class SoundManager extends JPanel implements ActionListener{
         this.setName("Sound Manager");
         this.setLayout(new FlowLayout());
 
-
-
         soundInit("sound3.wav");
-
 
         soundList = new JComboBox(sounds);
         soundList.setSelectedIndex(3);
@@ -78,12 +74,6 @@ public class SoundManager extends JPanel implements ActionListener{
 
             }
         });
-
-
-
-
-
-
 
 
         add(soundList);
