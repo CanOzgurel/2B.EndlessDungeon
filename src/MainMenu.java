@@ -32,7 +32,7 @@ public class MainMenu extends JFrame implements ActionListener{
     MainMenu()
     {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setTitle("MainMenu");
+        this.setTitle("Main Menu");
         this.setSize(mainMenuD);
         this.setLayout(new BorderLayout());
 
@@ -84,6 +84,7 @@ public class MainMenu extends JFrame implements ActionListener{
             add(mainPanel, BorderLayout.CENTER);
             add(back, BorderLayout.SOUTH);
             setSize(gameD);
+            setTitle("Game");
 
         }
         else if ("settings".equals(e.getActionCommand()))
@@ -93,6 +94,7 @@ public class MainMenu extends JFrame implements ActionListener{
             add(settings, BorderLayout.CENTER);
             add(back, BorderLayout.SOUTH);
             setSize(settingsD);
+            setTitle("Settings");
 
 
         }
@@ -103,6 +105,7 @@ public class MainMenu extends JFrame implements ActionListener{
             add(howToPage, BorderLayout.CENTER);
             add(back, BorderLayout.SOUTH);
             setSize(howToPlayD);
+            setTitle("How To Play");
 
         }
         else if ("credits".equals(e.getActionCommand()))
@@ -113,6 +116,7 @@ public class MainMenu extends JFrame implements ActionListener{
             add(creditsPage, BorderLayout.CENTER);
             add(back, BorderLayout.SOUTH);
             setSize(howToPlayD);
+            setTitle("Credits");
 
 
         }
@@ -132,6 +136,7 @@ public class MainMenu extends JFrame implements ActionListener{
             remove(back);
             setSize(mainMenuD);
             add(mainBundle, BorderLayout.CENTER);
+            setTitle("Main Menu");
         }
 
     }
