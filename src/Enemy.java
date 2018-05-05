@@ -1,13 +1,13 @@
 import java.awt.*;
 
 public class Enemy {
-    protected float health, maxHealth, damage, armor;
+    protected double health, maxHealth, damage, armor;
     protected int width, height, side, x, y;
     private Image img;
     private final int MARGIN = 70;
     private boolean isClicked = false;
 
-    public Enemy(float health, float maxHealth, float damage, float armor, int width, int height, int side, Image img) {
+    public Enemy(double health, double maxHealth, double damage, double armor, int width, int height, int side, Image img) {
         this.health = health;
         this.maxHealth = maxHealth;
         this.damage = damage;
@@ -46,17 +46,29 @@ public class Enemy {
 
                 g.setStroke(oldStroke);
             }
+//            else {
+//            	Font newFont = new Font ("Courier New", Font.BOLD , 30);
+//            g.setFont(newFont);
+//            g.setColor(Color.WHITE);
+//            g.drawString("LEVEL CLEARED", 350, 350);
+//            }
 
             renderHealthBar(g);
 
             g.setColor(Color.BLACK);
             g.drawImage(img, x, y, width, height, null);
         }
+        
     }
 
     public void renderHealthBar(Graphics2D g) {
         g.setColor(Color.GRAY);
         g.drawRect(x + 10, y - 30, width - 20, 10);
+        
+        g.setColor(Color.WHITE);
+        g.drawString("Health: " + health, x+10, y-60);
+        g.drawString("Damage: " + damage, x+10, y-40);
+        g.drawString("Armor: " + armor, x+100, y-40);
 
         if (health <= 20) {
             g.setColor(Color.RED);
@@ -80,7 +92,7 @@ public class Enemy {
     }
 
     public void attack(Player player) {
-        float damageDealt = this.damage - player.getArmor();
+    	double damageDealt = this.damage - player.getArmor();
 
         if (damageDealt > 0) {
             player.setHealth(player.getHealth() - damageDealt);
@@ -91,35 +103,35 @@ public class Enemy {
         return isClicked;
     }
 
-    public float getHealth() {
+    public double getHealth() {
         return health;
     }
 
-    public void setHealth(float health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 
-    public float getMaxHealth() {
+    public double getMaxHealth() {
         return maxHealth;
     }
 
-    public void setMaxHealth(float maxHealth) {
+    public void setMaxHealth(double maxHealth) {
         this.maxHealth = maxHealth;
     }
 
-    public float getDamage() {
+    public double getDamage() {
         return damage;
     }
 
-    public void setDamage(float damage) {
+    public void setDamage(double damage) {
         this.damage = damage;
     }
 
-    public float getArmor() {
+    public double getArmor() {
         return armor;
     }
 
-    public void setArmor(float armor) {
+    public void setArmor(double armor) {
         this.armor = armor;
     }
 

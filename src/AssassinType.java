@@ -7,7 +7,7 @@ public class AssassinType  extends PlayerType{
 
     public AssassinType()
     {
-        super(0,20,10);
+        super("Assassin", 0,20,10);
 
     }
 
@@ -23,4 +23,5 @@ public class AssassinType  extends PlayerType{
     {
         return  extraArmor;
     }
+    
 }
