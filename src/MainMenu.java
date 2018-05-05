@@ -34,7 +34,6 @@ public class MainMenu extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("MainMenu");
         this.setSize(mainMenuD);
-        this.setVisible(true);
         this.setLayout(new BorderLayout());
 
         settings= new SoundManager();
@@ -75,6 +74,7 @@ public class MainMenu extends JFrame implements ActionListener{
         mainBundle.add(exit);
         add(mainBundle, BorderLayout.CENTER);
 
+        this.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
