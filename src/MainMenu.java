@@ -16,17 +16,18 @@ public class MainMenu extends JFrame implements ActionListener{
     private JPanel mainBundle;
     private JPanel mainPanel;
 
-    JButton newGame;
-    JButton settingsButton;
-    JButton howToPlay;
-    JButton credits;
-    JButton exit;
-    JButton back;
+    private JButton newGame;
+    private JButton settingsButton;
+    private JButton howToPlay;
+    private JButton credits;
+    private JButton exit;
+    private JButton back;
 
-    Dimension settingsD = new Dimension(500, 140);
-    Dimension mainMenuD =  new Dimension(300, 350);
-    Dimension howToPlayD = new Dimension(500, 380);
-    Dimension gameD = new Dimension(800, 500);
+    private Dimension settingsD = new Dimension(500, 140);
+    private Dimension mainMenuD =  new Dimension(300, 350);
+    private Dimension howToPlayD = new Dimension(500, 380);
+    private Dimension creditsD = new Dimension(400, 300);
+    private Dimension gameD = new Dimension(WIDTH, HEIGHT);
 
 
     MainMenu()
@@ -40,6 +41,7 @@ public class MainMenu extends JFrame implements ActionListener{
         howToPage = new Howto();
         creditsPage = new Credits();
         mainPanel = new MainPanel();
+
 
         newGame= new JButton("New Game");
         newGame.addActionListener(this);
@@ -115,7 +117,7 @@ public class MainMenu extends JFrame implements ActionListener{
             remove(mainBundle);
             add(creditsPage, BorderLayout.CENTER);
             add(back, BorderLayout.SOUTH);
-            setSize(howToPlayD);
+            setSize(creditsD);
             setTitle("Credits");
 
 

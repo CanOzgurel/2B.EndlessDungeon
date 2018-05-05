@@ -16,7 +16,7 @@ public class Howto extends JPanel{
     public Howto()
     {
         setName("How to Play");
-        textArea = new JTextArea(5, 20);
+        textArea = new JTextArea();
         JScrollPane scrollPane = new JScrollPane(textArea);
         textArea.setEditable(false);
 

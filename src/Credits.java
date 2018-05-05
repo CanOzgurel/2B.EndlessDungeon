@@ -15,7 +15,7 @@ public class Credits extends JPanel{
     public Credits()
     {
         setName("Credits");
-        textArea = new JTextArea(5, 20);
+        textArea = new JTextArea();
         JScrollPane scrollPane = new JScrollPane(textArea);
         textArea.setEditable(false);
 
