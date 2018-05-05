@@ -1,0 +1,7 @@
+Developed by:
+	Can Ozgurel
+	Alperen Kaya
+	Batuhan Erarslan
+	Alemdar Salmoor
+
+for "CS 319 Object Oriented Software Engineering, Spring 2018"

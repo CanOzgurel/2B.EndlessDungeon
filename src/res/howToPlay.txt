@@ -1,0 +1,12 @@
+	
+	In Endless Dungeon, you will be faced with waves of monsters.
+Your goal is to kill them all.
+
+To play, you select an enemy by clicking on it, and then press "Attack" or
+choose a skill from the buttons at the bottom of the screen.
+You can attack one enemy each turn, and they will hit back.
+When you clear all three, you will get to the next stage.
+You will gather experience and when you have enough you will level up.
+Next to some bosses you will see their special type,
+which will make them more or less vulnerable to some of your skills.
+Enemies also drop some items at random, which will help you at your quest.
