@@ -12,8 +12,8 @@ import javax.swing.event.ChangeEvent;
 public class SoundManager extends JPanel implements ActionListener{
 
     JSlider slider;
-    ImageIcon muteIcon = new ImageIcon("mute.jpg");
-    ImageIcon unmuteIcon = new ImageIcon("unmute.jpg");
+    ImageIcon muteIcon = new ImageIcon("src/res/mute.jpg");
+    ImageIcon unmuteIcon = new ImageIcon("src/res/unmute.jpg");
 
     File file;
 
@@ -41,7 +41,7 @@ public class SoundManager extends JPanel implements ActionListener{
         this.setName("Sound Manager");
         this.setLayout(new FlowLayout());
 
-        soundInit("sound3.wav");
+        soundInit("src/res/sound3.wav");
 
         soundList = new JComboBox(sounds);
         soundList.setSelectedIndex(3);
