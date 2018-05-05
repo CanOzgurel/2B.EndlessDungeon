@@ -7,7 +7,7 @@ public class WarriorType  extends PlayerType{
 
     public WarriorType()
     {
-        super("Warrior", 15,15,5);
+        super(15,15,5);
 
     }
 

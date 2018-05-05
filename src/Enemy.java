@@ -21,11 +21,11 @@ public class Enemy {
 
         if (side == 1) {
             x = MARGIN -20 ;
-            y = GameFrame.HEIGHT / 2 - height / 3;
+            y = MainMenu.HEIGHT / 2 - height / 3;
         }
         else {
-            x = GameFrame.WIDTH - MARGIN - width + 20;
-            y = GameFrame.HEIGHT / 2 - height / 3;
+            x = MainMenu.WIDTH - MARGIN - width + 20;
+            y = MainMenu.HEIGHT / 2 - height / 3;
         }
 
     }
@@ -61,20 +61,20 @@ public class Enemy {
             g.setColor(Color.BLACK);
             g.drawImage(img, x, y, width, height, null);
         }
-        
+
     }
 
     public void renderHealthBar(Graphics2D g) {
         g.setColor(Color.GRAY);
         g.drawRect(x + 10, y - 30, width - 20, 10);
-        
+
         Font newFont = new Font ("Courier New", Font.BOLD , 15);
         g.setFont(newFont);
         g.setColor(Color.WHITE);
         g.drawString("Health: " + health, x+10, y-80);
         g.drawString("Damage: " + damage, x+10, y-60);
         g.drawString("Armor: " + armor, x+10, y-40);
-        
+
         if (health <= 20) {
             g.setColor(Color.RED);
         }
@@ -84,19 +84,19 @@ public class Enemy {
 
         g.fillRect(x + 11, y - 29, (int)((health / maxHealth) * (width - 21)), 9 );
     }
-    
+
     public void renderType(Graphics2D g) {
         if(bossType == 1) {
-        	Font newFont2 = new Font ("Bookman Old Style", Font.PLAIN, 30);
+            Font newFont2 = new Font ("Bookman Old Style", Font.PLAIN, 30);
             g.setFont(newFont2);
-        	g.setColor(Color.RED);
-        	g.drawString("FIRE", x+200, y-40);
+            g.setColor(Color.RED);
+            g.drawString("FIRE", x+200, y-40);
         }
         else if(bossType == 2) {
-        	Font newFont2 = new Font ("Bookman Old Style", Font.PLAIN, 30);
+            Font newFont2 = new Font ("Bookman Old Style", Font.PLAIN, 30);
             g.setFont(newFont2);
-        	g.setColor(Color.CYAN);
-        	g.drawString("FROST", x+200, y-40);
+            g.setColor(Color.CYAN);
+            g.drawString("FROST", x+200, y-40);
         }
 
     }
@@ -113,7 +113,7 @@ public class Enemy {
     }
 
     public void attack(Player player) {
-    	double damageDealt = this.damage - player.getArmor();
+        double damageDealt = this.damage - player.getArmor();
 
         if (damageDealt > 0) {
             player.setHealth(player.getHealth() - damageDealt);
@@ -163,8 +163,8 @@ public class Enemy {
     public void setImg(Image img) {
         this.img = img;
     }
-    
+
     public int getType() {
-    	return bossType;
+        return bossType;
     }
 }

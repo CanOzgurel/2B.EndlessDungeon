@@ -67,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.drawImage(new ImageIcon("src/res/dungeon_wall.png").getImage(), 0, 0, GameFrame.WIDTH, GameFrame.HEIGHT, null);
+        g2d.drawImage(new ImageIcon("src/res/dungeon_wall.png").getImage(), 0, 0, MainMenu.WIDTH, MainMenu.HEIGHT, null);
 
         ObjectHandler.getInstance().render(g2d);
         renderHUD(g2d);
@@ -76,12 +76,12 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void renderHUD(Graphics2D g) {
-    	double health = ObjectHandler.getInstance().getPlayer().getHealth();
-    	double maxHealth = ObjectHandler.getInstance().getPlayer().getMaxHealth();
-    	double damage = ObjectHandler.getInstance().getPlayer().getDamage();
-    	double armor = ObjectHandler.getInstance().getPlayer().getArmor();   
-    	
-    	Font newFont = new Font ("Bookman Old Style", Font.PLAIN , 15);
+        double health = ObjectHandler.getInstance().getPlayer().getHealth();
+        double maxHealth = ObjectHandler.getInstance().getPlayer().getMaxHealth();
+        double damage = ObjectHandler.getInstance().getPlayer().getDamage();
+        double armor = ObjectHandler.getInstance().getPlayer().getArmor();
+
+        Font newFont = new Font ("Bookman Old Style", Font.PLAIN , 15);
         g.setFont(newFont);
         g.setColor(Color.WHITE);
         g.drawString("Health:" + health , 10, 20);
@@ -101,12 +101,12 @@ public class GamePanel extends JPanel implements Runnable {
         g.setColor(Color.WHITE);
         g.drawString("Damage: " + damage, 220, 20);
         g.drawString("Armor: " + armor, 350, 20);
-        
+
         Font newFont2 = new Font ("Batang", Font.BOLD , 35);
         g.setFont(newFont2);
         g.setColor(Color.ORANGE);
         g.drawString("STAGE: " + ObjectHandler.getInstance().getStage(), 480, 40);
 
-       
+
     }
 }

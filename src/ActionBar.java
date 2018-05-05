@@ -11,39 +11,39 @@ public class ActionBar extends JPanel {
 
     public ActionBar() {
         attackButton = new JButton("Attack");
-        
-        	skills.add(new JButton("Sacred Sword"));
-        	skills.add(new JButton("Fireball"));
-        	skills.add(new JButton("Frost Nova"));
-			
+
+        skills.add(new JButton("Sacred Sword"));
+        skills.add(new JButton("Fireball"));
+        skills.add(new JButton("Frost Nova"));
+
         attackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameManager.getInstance().managePlayerAttacks(0);
             }
         });
-        
-       skills.get(0).addActionListener(new ActionListener() {
+
+        skills.get(0).addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameManager.getInstance().managePlayerAttacks(1);
             }
         });
-       
-       skills.get(1).addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               GameManager.getInstance().managePlayerAttacks(2);
-           }
-       });
-       
-       skills.get(2).addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               GameManager.getInstance().managePlayerAttacks(3);
-           }
-       });
-  
+
+        skills.get(1).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameManager.getInstance().managePlayerAttacks(2);
+            }
+        });
+
+        skills.get(2).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameManager.getInstance().managePlayerAttacks(3);
+            }
+        });
+
 
         setBackground(Color.GRAY);
         setLayout(new FlowLayout());

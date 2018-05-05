@@ -12,8 +12,9 @@ import javax.swing.event.ChangeEvent;
 public class SoundManager extends JPanel implements ActionListener{
 
     JSlider slider;
-    ImageIcon muteIcon = new ImageIcon("src/res/mute.jpg");
-    ImageIcon unmuteIcon = new ImageIcon("src/res/unmute.jpg");
+    ImageIcon muteIcon = new ImageIcon("mute.jpg");
+    ImageIcon unmuteIcon = new ImageIcon("unmute.jpg");
+
 
     File file;
 
@@ -24,7 +25,7 @@ public class SoundManager extends JPanel implements ActionListener{
 
     private boolean muted = false;
 
-    private static final float DIV = (float) 2.85;
+    private static final float DIV = (float) 2.86;
     private static final float SHIFT = (float) 29;
     private static final float MIN = (float)-80;
 
@@ -41,7 +42,10 @@ public class SoundManager extends JPanel implements ActionListener{
         this.setName("Sound Manager");
         this.setLayout(new FlowLayout());
 
+
+
         soundInit("src/res/sound3.wav");
+
 
         soundList = new JComboBox(sounds);
         soundList.setSelectedIndex(3);
@@ -74,6 +78,8 @@ public class SoundManager extends JPanel implements ActionListener{
 
             }
         });
+
+
 
 
         add(soundList);
@@ -136,15 +142,15 @@ public class SoundManager extends JPanel implements ActionListener{
             int selected = cb.getSelectedIndex();
             if(selected == 0)
             {
-                soundInit("sound1.wav");
+                soundInit("src/res/sound1.wav");
             }
             else if (selected == 1)
             {
-                soundInit("sound2.wav");
+                soundInit("src/res/sound2.wav");
             }
             else if (selected == 2)
             {
-                soundInit("sound3.wav");
+                soundInit("src/res/sound3.wav");
             }
             else
             {

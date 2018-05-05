@@ -3,7 +3,7 @@ import java.util.concurrent.TimeUnit;
 public class GameManager {
     private static GameManager instance = new GameManager();
     private TurnManager turnManager;
-    
+
 
     private GameManager() {
         turnManager = new TurnManager();
@@ -19,13 +19,13 @@ public class GameManager {
 
     public void managePlayerAttacks(int n) {
         if (canPlayerAttack())
-        		ObjectHandler.getInstance().getPlayer().attack(ObjectHandler.getInstance().getClickedEnemy(), n);
-        
+            ObjectHandler.getInstance().getPlayer().attack(ObjectHandler.getInstance().getClickedEnemy(), n);
+
         if(!ObjectHandler.getInstance().turnUpdate())
             turnManager.playTurn();
         else
-        	turnManager.resetTurnNo();
-            
+            turnManager.resetTurnNo();
+
     }
 
     public void manageEnemyAttacks() {

@@ -16,31 +16,29 @@ public class Item {
     {
         return item;
     }
-    
+
     public void setItem(int item) {
-    	item = item;
+        item = item;
     }
-    
+
     public String getName() {
-    	return name;
+        return name;
     }
-    
+
     public void setName(String name) {
-    	this.name = name;
+        this.name = name;
     }
-    
+
     public int getExtraHealth() {
-    	return extraHealth;
+        return extraHealth;
     }
-    
+
     public int getExtraDamage() {
-    	return extraDamage;
+        return extraDamage;
     }
-    
+
     public int getExtraArmor() {
-    	return extraArmor;
+        return extraArmor;
     }
-    
+
 }
-    
-    
