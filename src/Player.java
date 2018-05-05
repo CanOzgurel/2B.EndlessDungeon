@@ -29,13 +29,29 @@ public class Player {
 
     }
 
+    public double getMana() {
+        return mana;
+    }
+
+    public void setMana(double mana) {
+        this.mana = mana;
+    }
+
+    public double getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxMana(double maxMana) {
+        this.maxMana = maxMana;
+    }
+
     public void attack(Enemy enemy, int n) {
         double damageDealt=0;
         if (n == 0)
             damageDealt = this.damage - enemy.getArmor();
 
         else {
-            if(mana > 0) {
+            if(mana > 0 && mana-this.skills.get(n-1).getManaReq() >= 0) {
                 if(this.skills.get(n-1).getType().equals("Frost") ) {
                     if(enemy.getType() == 1 )
                         damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();

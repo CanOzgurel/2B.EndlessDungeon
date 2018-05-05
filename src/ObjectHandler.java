@@ -54,11 +54,11 @@ public class ObjectHandler {
         requiredExp = 1000;
         expGain = 100;
 
-        Skill SacredSword = new Skill("Skill1", playerDamage*3, "Melee");
+        Skill SacredSword = new Skill("Skill1", playerDamage*3, 50, "Melee");
         skills.add(SacredSword);
-        Skill Fireball = new Skill("Skill2", playerDamage*2, "Fire" );
+        Skill Fireball = new Skill("Skill2", playerDamage*2, 40, "Fire" );
         skills.add(Fireball);
-        Skill FrostNova = new Skill("Skill3", playerDamage*2, "Frost" );
+        Skill FrostNova = new Skill("Skill3", playerDamage*2, 40, "Frost" );
         skills.add(FrostNova);
 
         plateMail = new Item(1, 0, 0, 10, "Plate Mail");
