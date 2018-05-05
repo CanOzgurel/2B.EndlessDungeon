@@ -5,12 +5,12 @@ import java.io.FileReader;
 
 public class Credits extends JPanel{
 
-    JTextArea textArea;
+    private JTextArea textArea;
 
 
-    String path = "src/res/credits.txt";
-    FileReader fr;
-    BufferedReader reader;
+    private String path = "src/res/credits.txt";
+    private FileReader fr;
+    private BufferedReader reader;
 
     public Credits()
     {
@@ -29,7 +29,6 @@ public class Credits extends JPanel{
         {
             e.printStackTrace();
         }
-
 
         add(textArea);
 

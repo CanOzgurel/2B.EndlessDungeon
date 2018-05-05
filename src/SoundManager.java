@@ -11,17 +11,17 @@ import javax.swing.event.ChangeEvent;
 
 public class SoundManager extends JPanel implements ActionListener{
 
-    JSlider slider;
-    ImageIcon muteIcon = new ImageIcon("src/res/mute.jpg");
-    ImageIcon unmuteIcon = new ImageIcon("src/res/unmute.jpg");
+    private JSlider slider;
+    private ImageIcon muteIcon = new ImageIcon("src/res/mute.jpg");
+    private ImageIcon unmuteIcon = new ImageIcon("src/res/unmute.jpg");
 
 
-    File file;
+    private File file;
 
-    JButton mute;
-    Clip clip;
+    private JButton mute;
+    private Clip clip;
 
-    JComboBox soundList;
+    private JComboBox soundList;
 
     private boolean muted = false;
 

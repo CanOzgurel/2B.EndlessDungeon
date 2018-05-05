@@ -4,12 +4,12 @@ import java.io.FileReader;
 
 public class Howto extends JPanel{
 
-    JTextArea textArea;
+    private JTextArea textArea;
 
 
-    String path = "src/res/howToPlay.txt";
-    FileReader fr;
-    BufferedReader reader;
+    private String path = "src/res/howToPlay.txt";
+    private FileReader fr;
+    private BufferedReader reader;
 
 
 
