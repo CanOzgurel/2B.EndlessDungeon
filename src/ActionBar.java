@@ -11,22 +11,11 @@ public class ActionBar extends JPanel {
 
     public ActionBar() {
         attackButton = new JButton("Attack");
-        itemsButton = new JButton("Items");
         
-        	skills.add(new JButton("Skill1"));
-        	skills.add(new JButton("Skill2"));
-        	skills.add(new JButton("Skill3"));
-//        }else if(ObjectHandler.getInstance().getPlayer().getPlayerType().getType() == "Assassin") {
-//        	skills.add(new JButton("rogueSkill1"));
-//        	skills.add(new JButton("rogueSkill2"));
-//        	skills.add(new JButton("rogueSkill3"));
-//        }
-//        else if(ObjectHandler.getInstance().getPlayer().getPlayerType().getType() == "Mage") {
-//        	skills.add(new JButton("mageSkill1"));
-//        	skills.add(new JButton("mageSkill2"));
-//        	skills.add(new JButton("mageSkill3"));
-//        }
-
+        	skills.add(new JButton("Sacred Sword"));
+        	skills.add(new JButton("Fireball"));
+        	skills.add(new JButton("Frost Nova"));
+			
         attackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,7 +48,6 @@ public class ActionBar extends JPanel {
         setBackground(Color.GRAY);
         setLayout(new FlowLayout());
         this.add(attackButton);
-        this.add(itemsButton);
         this.add(skills.get(0));
         this.add(skills.get(1));
         this.add(skills.get(2));

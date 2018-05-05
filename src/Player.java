@@ -1,18 +1,26 @@
 import java.util.ArrayList;
+import java.awt.*;
+import javax.swing.*;
 
 public class Player {
     private double health, maxHealth, damage, armor;
     private int level;
     private ArrayList<Skill> skills = new ArrayList<Skill>();
+    private ArrayList<Item> inventory = new ArrayList<Item>();
+    private Image imgPlate, imgSword, imgScroll;
     
-    public Player(double health, double maxHealth, double damage, double armor, int level, ArrayList<Skill> skills) {
+    public Player(double health, double maxHealth, double damage, double armor, int level, ArrayList<Skill> skills, ArrayList<Item> inventory) {
         this.health = health;
         this.maxHealth = maxHealth;
         this.damage = damage;
         this.armor = armor;
         this.level = level;
-//        this.type = type; //1: warrior 2: rogue 3: mage
         this.skills = skills;
+        this.inventory = inventory;
+        this.imgPlate = new ImageIcon("src/res/platemail.jpg").getImage();
+        this.imgSword = new ImageIcon("src/res/sword.jpg").getImage();
+        this.imgScroll = new ImageIcon("src/res/scroll.jpg").getImage();
+
     }
 
     public void update() {
@@ -24,10 +32,29 @@ public class Player {
     	if (n == 0)
     		damageDealt = this.damage - enemy.getArmor();
     	
-    	else
-    		damageDealt = this.skills.get(n-1).getDamage() - enemy.getArmor();
+    	else {
+    		if(enemy.getType() == 1 && this.skills.get(n-1).getType().equals("Frost") ) {
+    			damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();
+    		}
+    		else if(enemy.getType() == 2 && this.skills.get(n-1).getType().equals("Fire") ) {
+    			damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();
+    		}
+    		else
+    			damageDealt = this.skills.get(n-1).getDamage() - enemy.getArmor();
+    	}
     	
             enemy.setHealth((int)enemy.getHealth() - damageDealt);
+    }
+    
+    public void renderInventory(Graphics2D g){
+    	if(inventory.get(0) != null)
+    		g.drawImage(imgPlate, 25, 25, null );
+    	if(inventory.get(1) != null) 
+       		g.drawImage(imgSword, 70, 25, null );
+     	if(inventory.get(2) != null)
+       		g.drawImage(imgScroll, 115, 25, null );
+    		
+    	
     }
 
     public double getHealth() {
@@ -70,21 +97,13 @@ public class Player {
     	this.level = level;
     }
     
-//    public PlayerType getPlayerType() {
-//    	return type;
-//    }
-//    
-//    public void setType( int type) { //1 for Warrior, 2 for Assassin, 3 for Mage
-//    	switch(type) {
-//    	case 1: this.type = new WarriorType();
-//    			break;
-//    	case 2: this.type = new AssassinType();
-//    			break;
-//    	case 3: this.type = new MageType();
-//    			break;
-//    	default: this.type = new WarriorType();
-//				 break;
-//    	}
-//    }
+    public ArrayList<Item> getInventory(){
+    	return inventory;
+    }
+    
+    public void addItem(Item item){
+    	inventory.add(item);
+    }
+
     
 }

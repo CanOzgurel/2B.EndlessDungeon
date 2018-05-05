@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Scanner; 
+import java.util.Random;
 
 public class ObjectHandler {
     private static ObjectHandler instance = new ObjectHandler();
@@ -11,17 +11,20 @@ public class ObjectHandler {
     private Image imgEnemyLeft, imgEnemyRight, imgEnemyBoss;
     private double enemyHealth, enemyDamage, enemyArmor; 
     private double bossHealth, bossDamage, bossArmor;
+    private int bossType;
     private double defPlayerHealth, playerDamage, playerArmor, playerHealth;
 //    private PlayerType playerType;
     private int stage;
-    private int level, experience, requiredExp, expGain, bossGain;
+    private int level, experience, requiredExp, expGain, bossGain, drop;
     private ArrayList<Skill> skills = new ArrayList<Skill>();
+    private ArrayList<Item> inventory = new ArrayList<Item>();
+    private Item plateMail, dragonSword, scrollOfLight;
     
 
     protected  ObjectHandler() {
         imgEnemyLeft = new ImageIcon("src/res/enemy_basic_1.png").getImage();
-        imgEnemyRight = new ImageIcon("src/res/enemy_basic_2.png").getImage();
-        imgEnemyBoss = new ImageIcon("src/res/enemy_boss_1.png").getImage();
+        imgEnemyRight= new ImageIcon("src/res/enemy_basic_2.png").getImage();
+        
         
         enemyHealth = 100;
         enemyDamage = 10;
@@ -29,6 +32,19 @@ public class ObjectHandler {
         bossHealth = 200;
         bossDamage = 15;
         bossArmor = 5;
+        
+        Random rand = new Random();
+        bossType = rand.nextInt(4) + 1;
+        
+        switch(bossType) {
+        case 1:  imgEnemyBoss = new ImageIcon("src/res/enemy_fire_boss.png").getImage();
+        		 break;
+        case 2: imgEnemyBoss = new ImageIcon("src/res/enemy_ice_boss.png").getImage();
+				 break;
+		default: imgEnemyBoss = new ImageIcon("src/res/enemy_boss_1.png").getImage();
+		 		 break;
+        }
+        
         
         defPlayerHealth = 500;
         playerHealth = 500;
@@ -38,36 +54,75 @@ public class ObjectHandler {
     	requiredExp = 1000;
     	expGain = 100;
         
-        	Skill Skill1 = new Skill("Skill1", 100 );
-        	skills.add(0,Skill1);
-        	Skill Skill2 = new Skill("Skill2", 200 );
-        	skills.add(1,Skill2);
-        	Skill Skill3 = new Skill("Skill3", 300 );
-        	skills.add(2,Skill3);
-
+        Skill SacredSword = new Skill("Skill1", playerDamage*3, "Melee");
+        skills.add(SacredSword);
+        Skill Fireball = new Skill("Skill2", playerDamage*2, "Fire" );
+        skills.add(Fireball);
+        Skill FrostNova = new Skill("Skill3", playerDamage*2, "Frost" );
+        skills.add(FrostNova);
+        
+        plateMail = new Item(1, 0, 0, 10, "Plate Mail");
+        dragonSword = new Item(2,0, 50, 0, "Dragon Sword");
+        scrollOfLight = new Item(3, 200, 0, 0, "Scroll of Light");
+        
+        for(int i=0; i<3; i++) {
+        	inventory.add(i, null);
+        }
+        	
         stage = 1;
-
-        enemyLeft = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 1, imgEnemyLeft);
-        enemyRight = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 2, imgEnemyRight);
-        enemyBoss = new BossEnemy(bossHealth, bossHealth, bossDamage, bossArmor, 300, 400, imgEnemyBoss);
-        player = new Player(playerHealth, defPlayerHealth, playerDamage, playerArmor, level, skills);
+                
+        enemyLeft = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 1,0,  imgEnemyLeft);
+        enemyRight = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 2, 0, imgEnemyRight);
+        enemyBoss = new BossEnemy(bossHealth, bossHealth, bossDamage, bossArmor, 300, 400, bossType, imgEnemyBoss);
+        player = new Player(playerHealth, defPlayerHealth, playerDamage, playerArmor, level, skills, inventory);
         
    
     }
     
 
     public void update() {
-    	 if(enemyLeft.getHealth() <= 0 && enemyRight.getHealth() <= 0 && enemyBoss.getHealth() <= 0) {
-    	
+    	 if(turnUpdate()) {
+    		     	
         enemyHealth += 10;
         enemyDamage += 2;
         enemyArmor += 1;
         bossHealth += 20;
         bossDamage += 5;
         bossArmor += 2;
+        
+        Random rand = new Random();
+        bossType = rand.nextInt(4) + 1;
+        
+        switch(bossType) {
+        case 1:  imgEnemyBoss = new ImageIcon("src/res/enemy_fire_boss.png").getImage();
+        		 break;
+        case 2:  imgEnemyBoss = new ImageIcon("src/res/enemy_ice_boss.png").getImage();
+				 break;
+		default: imgEnemyBoss = new ImageIcon("src/res/enemy_boss_1.png").getImage();
+		 		 break;
+        }
+        
         experience += expGain*2 + bossGain;
         expGain += 50;
         bossGain += 100;
+        
+        
+        Random randd = new Random();
+        drop = randd.nextInt(100) + 1;
+        
+        if(drop >= 1 && drop <= 5 && !inventory.contains(plateMail)) {
+        	inventory.set(0, plateMail);
+        	playerArmor += plateMail.getExtraArmor();
+        }
+        if(drop >= 30 && drop <= 33 && !inventory.contains(dragonSword)) {
+        	inventory.set(1,dragonSword);
+        	playerDamage += dragonSword.getExtraDamage();
+        }
+        if(drop >= 70 && drop <= 72 && !inventory.contains(scrollOfLight)) {
+        	inventory.set(2, scrollOfLight);
+        	defPlayerHealth += scrollOfLight.getExtraHealth();
+        }
+
         
         stage++;
         
@@ -75,7 +130,7 @@ public class ObjectHandler {
         	level++;
         	experience = 0;
         	requiredExp += 200;
-        	defPlayerHealth += defPlayerHealth * (level/10);
+        	defPlayerHealth += 100;
         	playerDamage += 10;
         	playerArmor += 2;
         }
@@ -83,10 +138,10 @@ public class ObjectHandler {
         playerHealth = defPlayerHealth;
        	
         
-        enemyLeft = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 1, imgEnemyLeft);
-        enemyRight = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 2, imgEnemyRight);
-        enemyBoss = new BossEnemy(bossHealth, bossHealth, bossDamage, bossArmor, 300, 400, imgEnemyBoss);
-        player = new Player(playerHealth, defPlayerHealth, playerDamage, playerArmor, level, skills);
+        enemyLeft = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 1, 0, imgEnemyLeft);
+        enemyRight = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 2, 0, imgEnemyRight);
+        enemyBoss = new BossEnemy(bossHealth, bossHealth, bossDamage, bossArmor, 300, 400, bossType, imgEnemyBoss);
+        player = new Player(playerHealth, defPlayerHealth, playerDamage, playerArmor, level, skills, inventory);
     	 }
         
         enemyLeft.update();
@@ -94,11 +149,19 @@ public class ObjectHandler {
         enemyBoss.update();
         player.update();
     }
+    
+    public boolean turnUpdate() {
+    	if(enemyLeft.getHealth() <= 0 && enemyRight.getHealth() <= 0 && enemyBoss.getHealth() <= 0) 
+    		return true;
+    	else
+    		return false;
+    }
 
     public void render(Graphics2D g) {
         enemyLeft.render(g);
         enemyRight.render(g);
         enemyBoss.render(g);
+        player.renderInventory(g);
     }
 
     public static ObjectHandler getInstance() {
@@ -155,6 +218,6 @@ public class ObjectHandler {
 	public int getStage() {
 		return stage;
 	}
-
+	
 }
 
