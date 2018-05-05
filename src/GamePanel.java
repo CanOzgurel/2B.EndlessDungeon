@@ -76,16 +76,16 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void renderHUD(Graphics2D g) {
-    	double health = ObjectHandler.getInstance().getPlayer().getHealth();
-    	double maxHealth = ObjectHandler.getInstance().getPlayer().getMaxHealth();
-    	double damage = ObjectHandler.getInstance().getPlayer().getDamage();
-    	double armor = ObjectHandler.getInstance().getPlayer().getArmor();   
+        float health = ObjectHandler.getInstance().getPlayer().getHealth();
+        float maxHealth = ObjectHandler.getInstance().getPlayer().getMaxHealth();
+        float damage = ObjectHandler.getInstance().getPlayer().getDamage();
+        float armor = ObjectHandler.getInstance().getPlayer().getArmor();
 
         g.setColor(Color.WHITE);
-        g.drawString("Health:" + ObjectHandler.getInstance().getPlayer().getHealth() , 10, 20);
+        g.drawString("Health:", 10, 20);
 
         g.setColor(Color.GRAY);
-        g.drawRect(80, 10, 100, 10);
+        g.drawRect(55, 10, 100, 10);
 
         if (health <= 20) {
             g.setColor(Color.RED);
@@ -94,17 +94,10 @@ public class GamePanel extends JPanel implements Runnable {
             g.setColor(Color.GREEN);
         }
 
-        g.fillRect(80, 11, (int)((health / maxHealth) * 99), 9 );
+        g.fillRect(56, 11, (int)((health / maxHealth) * 99), 9 );
 
         g.setColor(Color.WHITE);
         g.drawString("Damage: " + damage, 200, 20);
         g.drawString("Armor: " + armor, 300, 20);
-        
-        Font newFont = new Font ("Courier New", Font.BOLD , 30);
-        g.setFont(newFont);
-        g.setColor(Color.WHITE);
-        g.drawString("STAGE: " + ObjectHandler.getInstance().getStage(), 500, 30);
-        
-       
     }
 }

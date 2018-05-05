@@ -7,7 +7,7 @@ public class MageType extends PlayerType{
 
     public MageType()
     {
-        super("Mage", 0,10,20);
+        super(0,10,20);
 
     }
 
