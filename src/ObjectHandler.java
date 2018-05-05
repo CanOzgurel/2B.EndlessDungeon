@@ -12,8 +12,7 @@ public class ObjectHandler {
     private double enemyHealth, enemyDamage, enemyArmor;
     private double bossHealth, bossDamage, bossArmor;
     private int bossType;
-    private double defPlayerHealth, playerDamage, playerArmor, playerHealth;
-    //    private PlayerType playerType;
+    private double defPlayerHealth, playerDamage, playerArmor, playerHealth, defPlayerMana, playerMana;
     private int stage;
     private int level, experience, requiredExp, expGain, bossGain, drop;
     private ArrayList<Skill> skills = new ArrayList<Skill>();
@@ -45,10 +44,11 @@ public class ObjectHandler {
                 break;
         }
 
-
-        defPlayerHealth = 500;
-        playerHealth = 500;
-        playerDamage = 50;
+        defPlayerHealth = 1000;
+        playerHealth = 1000;
+        defPlayerMana = 200;
+        playerMana = 200;
+        playerDamage = 30;
         playerArmor = 8;
         experience = 0;
         requiredExp = 1000;
@@ -74,9 +74,7 @@ public class ObjectHandler {
         enemyLeft = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 1,0,  imgEnemyLeft);
         enemyRight = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 2, 0, imgEnemyRight);
         enemyBoss = new BossEnemy(bossHealth, bossHealth, bossDamage, bossArmor, 300, 400, bossType, imgEnemyBoss);
-        player = new Player(playerHealth, defPlayerHealth, playerDamage, playerArmor, level, skills, inventory);
-
-
+        player = new Player(playerHealth, defPlayerHealth, playerMana, defPlayerMana, playerDamage, playerArmor, level, skills, inventory);
     }
 
 
@@ -131,6 +129,7 @@ public class ObjectHandler {
                 experience = 0;
                 requiredExp += 200;
                 defPlayerHealth += 100;
+                defPlayerMana += 20;
                 playerDamage += 10;
                 playerArmor += 2;
             }
@@ -141,7 +140,7 @@ public class ObjectHandler {
             enemyLeft = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 1, 0, imgEnemyLeft);
             enemyRight = new Enemy(enemyHealth, enemyHealth, enemyDamage, enemyArmor, 150, 200, 2, 0, imgEnemyRight);
             enemyBoss = new BossEnemy(bossHealth, bossHealth, bossDamage, bossArmor, 300, 400, bossType, imgEnemyBoss);
-            player = new Player(playerHealth, defPlayerHealth, playerDamage, playerArmor, level, skills, inventory);
+            player = new Player(playerHealth, defPlayerHealth, playerMana, defPlayerMana, playerDamage, playerArmor, level, skills, inventory);
         }
 
         enemyLeft.update();

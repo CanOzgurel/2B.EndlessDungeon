@@ -48,13 +48,6 @@ public class Enemy {
 
                 g.setStroke(oldStroke);
             }
-//            else {
-//            	Font newFont = new Font ("Courier New", Font.BOLD , 30);
-//            g.setFont(newFont);
-//            g.setColor(Color.WHITE);
-//            g.drawString("LEVEL CLEARED", 350, 350);
-//            }
-
             renderHealthBar(g);
             renderType(g);
 
@@ -70,7 +63,7 @@ public class Enemy {
 
         Font newFont = new Font ("Courier New", Font.BOLD , 15);
         g.setFont(newFont);
-        g.setColor(Color.WHITE);
+        g.setColor(Color.LIGHT_GRAY);
         g.drawString("Health: " + health, x+10, y-80);
         g.drawString("Damage: " + damage, x+10, y-60);
         g.drawString("Armor: " + armor, x+10, y-40);

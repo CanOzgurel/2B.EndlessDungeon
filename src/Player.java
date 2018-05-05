@@ -3,15 +3,17 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Player {
-    private double health, maxHealth, damage, armor;
+    private double health, maxHealth, mana, maxMana, damage, armor;
     private int level;
     private ArrayList<Skill> skills = new ArrayList<Skill>();
     private ArrayList<Item> inventory = new ArrayList<Item>();
     private Image imgPlate, imgSword, imgScroll;
 
-    public Player(double health, double maxHealth, double damage, double armor, int level, ArrayList<Skill> skills, ArrayList<Item> inventory) {
+    public Player(double health, double maxHealth, double mana, double maxMana, double damage, double armor, int level, ArrayList<Skill> skills, ArrayList<Item> inventory) {
         this.health = health;
         this.maxHealth = maxHealth;
+        this.mana = mana;
+        this.maxMana = maxMana;
         this.damage = damage;
         this.armor = armor;
         this.level = level;
@@ -28,19 +30,28 @@ public class Player {
     }
 
     public void attack(Enemy enemy, int n) {
-        double damageDealt;
+        double damageDealt=0;
         if (n == 0)
             damageDealt = this.damage - enemy.getArmor();
 
         else {
-            if(enemy.getType() == 1 && this.skills.get(n-1).getType().equals("Frost") ) {
-                damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();
+            if(mana > 0) {
+                if(this.skills.get(n-1).getType().equals("Frost") ) {
+                    if(enemy.getType() == 1 )
+                        damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();
+                    else if(enemy.getType() == 2)
+                        damageDealt = (this.skills.get(n-1).getDamage())/2 - enemy.getArmor();
+                }
+                else if(this.skills.get(n-1).getType().equals("Fire") ) {
+                    if(enemy.getType() == 1 )
+                        damageDealt = (this.skills.get(n-1).getDamage())/2 - enemy.getArmor();
+                    else if(enemy.getType() == 2)
+                        damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();
+                }
+                else
+                    damageDealt = this.skills.get(n-1).getDamage() - enemy.getArmor();
+                mana -= this.skills.get(n-1).getManaReq();
             }
-            else if(enemy.getType() == 2 && this.skills.get(n-1).getType().equals("Fire") ) {
-                damageDealt = (this.skills.get(n-1).getDamage())*2 - enemy.getArmor();
-            }
-            else
-                damageDealt = this.skills.get(n-1).getDamage() - enemy.getArmor();
         }
 
         enemy.setHealth((int)enemy.getHealth() - damageDealt);
@@ -53,8 +64,6 @@ public class Player {
             g.drawImage(imgSword, 70, 25, null );
         if(inventory.get(2) != null)
             g.drawImage(imgScroll, 115, 25, null );
-
-
     }
 
     public double getHealth() {

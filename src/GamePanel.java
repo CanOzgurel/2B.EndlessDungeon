@@ -78,6 +78,8 @@ public class GamePanel extends JPanel implements Runnable {
     public void renderHUD(Graphics2D g) {
         double health = ObjectHandler.getInstance().getPlayer().getHealth();
         double maxHealth = ObjectHandler.getInstance().getPlayer().getMaxHealth();
+        double maxMana = ObjectHandler.getInstance().getPlayer().getMaxMana();
+        double mana = ObjectHandler.getInstance().getPlayer().getMana();
         double damage = ObjectHandler.getInstance().getPlayer().getDamage();
         double armor = ObjectHandler.getInstance().getPlayer().getArmor();
 
@@ -89,6 +91,7 @@ public class GamePanel extends JPanel implements Runnable {
         g.setColor(Color.GRAY);
         g.drawRect(110, 10, 100, 10);
 
+
         if (health <= 20) {
             g.setColor(Color.RED);
         }
@@ -98,12 +101,30 @@ public class GamePanel extends JPanel implements Runnable {
 
         g.fillRect(110, 11, (int)((health / maxHealth) * 99), 9 );
 
+        Font newFont2 = new Font ("Bookman Old Style", Font.PLAIN , 15);
+        g.setFont(newFont);
+        g.setColor(Color.WHITE);
+        g.drawString("Mana:" + mana , 10, 40);
+
+        g.setColor(Color.GRAY);
+        g.drawRect(110, 30, 100, 10);
+
+        if (health <= 20) {
+            g.setColor(Color.RED);
+        }
+        else {
+            g.setColor(Color.BLUE);
+        }
+
+        g.fillRect(110, 30, (int)((mana / maxMana) * 99), 9 );
+
+
         g.setColor(Color.WHITE);
         g.drawString("Damage: " + damage, 220, 20);
         g.drawString("Armor: " + armor, 350, 20);
 
-        Font newFont2 = new Font ("Batang", Font.BOLD , 35);
-        g.setFont(newFont2);
+        Font newFont3 = new Font ("Batang", Font.BOLD , 35);
+        g.setFont(newFont3);
         g.setColor(Color.ORANGE);
         g.drawString("STAGE: " + ObjectHandler.getInstance().getStage(), 480, 40);
 
