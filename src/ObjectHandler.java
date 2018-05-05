@@ -217,13 +217,5 @@ public class ObjectHandler {
     public int getStage() {
         return stage;
     }
-	
-		public void setMana(double mana) {
-		this.playerMana = mana; 
-	}
-	
-	public double getMana() {
-		return playerMana;
-	}
 
 }
