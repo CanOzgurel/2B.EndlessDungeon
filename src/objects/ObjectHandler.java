@@ -1,8 +1,16 @@
+package objects;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * class ObjectHandler
+ * Handles the properties of the objects and calls their functions to establish connection with other packages
+ * Singleton class
+ * Façade class of the objects package
+ */
 public class ObjectHandler {
     private static ObjectHandler instance = new ObjectHandler();
     private Enemy enemyLeft, enemyRight;
@@ -20,7 +28,7 @@ public class ObjectHandler {
     private Item plateMail, dragonSword, scrollOfLight;
 
 
-    protected  ObjectHandler() {
+    private  ObjectHandler() {
         imgEnemyLeft = new ImageIcon("src/res/enemy_basic_1.png").getImage();
         imgEnemyRight= new ImageIcon("src/res/enemy_basic_2.png").getImage();
 
@@ -77,7 +85,7 @@ public class ObjectHandler {
         player = new Player(playerHealth, defPlayerHealth, playerMana, defPlayerMana, playerDamage, playerArmor, level, skills, inventory);
     }
 
-
+    // Updates the state of the game stage according to the recent actions taken by the player
     public void update() {
         if(turnUpdate()) {
 
@@ -149,6 +157,7 @@ public class ObjectHandler {
         player.update();
     }
 
+    // Checks whether if all the enemies are dead
     public boolean turnUpdate() {
         if(enemyLeft.getHealth() <= 0 && enemyRight.getHealth() <= 0 && enemyBoss.getHealth() <= 0)
             return true;
@@ -156,6 +165,7 @@ public class ObjectHandler {
             return false;
     }
 
+    // Calls the render functions of all of the objects
     public void render(Graphics2D g) {
         enemyLeft.render(g);
         enemyRight.render(g);

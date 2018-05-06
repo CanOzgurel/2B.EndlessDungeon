@@ -1,3 +1,5 @@
+package objects;
+
 public class Skill {
     private double damage, manaReq;
     private String name;

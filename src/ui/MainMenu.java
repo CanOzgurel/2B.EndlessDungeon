@@ -1,9 +1,22 @@
+package ui;
+
+import management.SoundManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowEvent;
 
+/**
+ * class MainMenu
+ * The menu to be shown to the user after starting the game
+ * Option 1 - New Game: Starts a new game and lets the player begin their adventure
+ * Option 2 - Settings: Sound settings to control the audio of the game
+ * Option 3 - How to Play: Shows the user how to play the game
+ * Option 4 - Credits: Shows the credits to the user to give information about the creators of the game
+ * Option 5 - Exit: Exits the game
+ */
 public class MainMenu extends JFrame implements ActionListener{
 
 
@@ -118,7 +131,7 @@ public class MainMenu extends JFrame implements ActionListener{
             add(creditsPage, BorderLayout.CENTER);
             add(back, BorderLayout.SOUTH);
             setSize(creditsD);
-            setTitle("Credits");
+            setTitle("ui.Credits");
 
 
         }
