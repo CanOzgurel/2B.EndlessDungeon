@@ -1,8 +1,17 @@
+package ui;
+
+import management.GameManager;
+import objects.ObjectHandler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * class GamePanel
+ * The game runs on this panel as every information that must be visible to the user about the game state is here
+ */
 public class GamePanel extends JPanel implements Runnable {
     private Thread thread;
     private final int FPS = 60;
@@ -75,6 +84,7 @@ public class GamePanel extends JPanel implements Runnable {
         g.dispose();
     }
 
+    // Renders the HUD to give the user information about the current state of their in-game character
     public void renderHUD(Graphics2D g) {
         double health = ObjectHandler.getInstance().getPlayer().getHealth();
         double maxHealth = ObjectHandler.getInstance().getPlayer().getMaxHealth();

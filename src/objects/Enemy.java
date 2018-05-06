@@ -1,9 +1,17 @@
+package objects;
+
+import ui.MainMenu;
+
 import java.awt.*;
 
+/**
+ * class Enemy
+ * The main opposition of the player in Endless Dungeon
+ */
 public class Enemy {
     protected double health, maxHealth, damage, armor;
     protected int width, height, side, x, y;
-    private int bossType; //between 0-4, 0: basic enemy, 1:fire boss, 2:frost boss, o 3-4 regular boss
+    private int bossType; // Between 0-4, 0: Basic enemy, 1: Fire boss, 2: Frost boss, 3-4: Regular boss
     private Image img;
     private final int MARGIN = 70;
     private boolean isClicked = false;
@@ -34,6 +42,7 @@ public class Enemy {
 
     }
 
+    // Renders the visual elements of the enemy
     public void render(Graphics2D g) {
         if (health > 0) {
             if (isClicked) {
@@ -57,6 +66,7 @@ public class Enemy {
 
     }
 
+    // Helper function for rendering the health bar
     public void renderHealthBar(Graphics2D g) {
         g.setColor(Color.GRAY);
         g.drawRect(x + 10, y - 30, width - 20, 10);
@@ -78,6 +88,7 @@ public class Enemy {
         g.fillRect(x + 11, y - 29, (int)((health / maxHealth) * (width - 21)), 9 );
     }
 
+    // Helper function for rendering the type of the enemy
     public void renderType(Graphics2D g) {
         if(bossType == 1) {
             Font newFont2 = new Font ("Bookman Old Style", Font.PLAIN, 30);
@@ -94,6 +105,7 @@ public class Enemy {
 
     }
 
+    // Checks whether the enemy has been clicked or not
     public void clicked(int x, int y) {
         Rectangle rect = new Rectangle(this.x, this.y, width, height);
 
@@ -105,6 +117,7 @@ public class Enemy {
         }
     }
 
+    // Attacks the given player object (only one player exists in Endless Dungeon)
     public void attack(Player player) {
         double damageDealt = this.damage - player.getArmor();
 

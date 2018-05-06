@@ -1,3 +1,7 @@
+package objects;
+
+import ui.MainMenu;
+
 import java.awt.*;
 
 public class BossEnemy extends Enemy {

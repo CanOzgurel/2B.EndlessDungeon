@@ -1,21 +1,22 @@
+package ui;
+
 import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class Howto extends JPanel{
+public class Credits extends JPanel{
 
     private JTextArea textArea;
 
 
-    private String path = "src/res/howToPlay.txt";
+    private String path = "src/res/credits.txt";
     private FileReader fr;
     private BufferedReader reader;
 
-
-
-    public Howto()
+    public Credits()
     {
-        setName("How to Play");
+        setName("Credits");
         textArea = new JTextArea();
         JScrollPane scrollPane = new JScrollPane(textArea);
         textArea.setEditable(false);
@@ -30,7 +31,6 @@ public class Howto extends JPanel{
         {
             e.printStackTrace();
         }
-
 
         add(textArea);
 

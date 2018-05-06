@@ -1,7 +1,16 @@
+package objects;
+
+import objects.Enemy;
+import objects.Item;
+
 import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * class Player
+ * Symbolizes the user as the adventurer in the game
+ */
 public class Player {
     private double health, maxHealth, mana, maxMana, damage, armor;
     private int level;
@@ -45,6 +54,7 @@ public class Player {
         this.maxMana = maxMana;
     }
 
+    // Makes the corresponding attack or uses the chosen skill depending on the player's choice
     public void attack(Enemy enemy, int n) {
         double damageDealt=0;
         if (n == 0)

@@ -1,9 +1,17 @@
+package ui;
+
+import management.GameManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * class ActionBar
+ * Shows the action choices of the player on the screen as buttons
+ */
 public class ActionBar extends JPanel {
     private JButton attackButton,itemsButton;
     private ArrayList<JButton> skills = new ArrayList<JButton>();
